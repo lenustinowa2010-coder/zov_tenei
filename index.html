@@ -4,37 +4,26 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Зов Теней — пошаговая MMORPG в Telegram</title>
-<meta name="description" content="Стань героем тёмного мира за 5 минут. Бои, кланы, войны за территории. 12 000 уникальных миров. Бесплатно в Telegram.">
+<meta name="description" content="Стань героем тёмного мира за 5 минут. Тактические бои, 5 классов, кланы и войны. Открывается в Telegram за один клик.">
 
-<!-- Open Graph для шеринга -->
+<!-- Open Graph -->
 <meta property="og:title" content="Зов Теней — пошаговая MMORPG в Telegram">
-<meta property="og:description" content="Стань героем тёмного мира за 5 минут. Бесплатно. Без скачивания.">
+<meta property="og:description" content="Стань героем тёмного мира за 5 минут. Открывается в Telegram за один клик.">
 <meta property="og:type" content="website">
-<meta property="og:image" content="">
 
-<!-- Шрифты: Cormorant Garamond для заголовков, Manrope для текста -->
+<!-- Шрифты -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Manrope:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-<!-- ===== ПИКСЕЛИ ДЛЯ РЕТАРГЕТА ===== -->
-<!-- VK Pixel -->
+<!-- ===== ПИКСЕЛИ ДЛЯ РЕТАРГЕТА (раскомментировать и подставить ID) ===== -->
 <script>
+  // VK Pixel
   // !function(){var t=document.createElement("script");t.type="text/javascript",t.async=!0,t.src='https://vk.com/js/api/openapi.js?169',t.onload=function(){VK.Retargeting.Init("VK_PIXEL_ID"),VK.Retargeting.Hit()},document.head.appendChild(t)}();
-</script>
 
-<!-- Яндекс.Метрика -->
-<script>
-  // (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
-  // m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
-  // (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+  // Яндекс.Метрика
+  // (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})(window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
   // ym(METRIKA_ID, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true, webvisor:true });
-</script>
-
-<!-- Telegram Analytics для TG Ads ретаргета -->
-<script>
-  // window.dataLayer = window.dataLayer || [];
-  // function gtag(){dataLayer.push(arguments);}
 </script>
 
 <style>
@@ -52,15 +41,12 @@
   --purple: #7f77dd;
   --purple-deep: #534ab7;
   --gold: #c9a96e;
-  --ember: #e07856;
   --font-display: 'Cormorant Garamond', Georgia, serif;
   --font-body: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
-
 html { scroll-behavior: smooth; }
-
 body {
   background: var(--bg-deep);
   color: var(--text);
@@ -70,10 +56,7 @@ body {
   font-weight: 400;
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
-
-/* Текстура шума на весь сайт */
 body::before {
   content: '';
   position: fixed;
@@ -83,7 +66,6 @@ body::before {
   opacity: 0.04;
   background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
 }
-
 .container { max-width: 1180px; margin: 0 auto; padding: 0 24px; position: relative; z-index: 2; }
 
 /* ========== HERO ========== */
@@ -96,8 +78,6 @@ body::before {
     radial-gradient(ellipse 60% 50% at 20% 80%, rgba(212, 83, 126, 0.12) 0%, transparent 60%),
     var(--bg-deep);
 }
-
-/* Декоративные глаза в углу */
 .hero-eyes {
   position: absolute;
   top: 60px;
@@ -119,7 +99,6 @@ body::before {
 }
 .hero-eyes::before { top: 100px; left: 60px; }
 .hero-eyes::after { top: 100px; left: 160px; animation-delay: 0.5s; }
-
 @keyframes pulse {
   0%, 100% { opacity: 0.6; transform: scale(1); }
   50% { opacity: 1; transform: scale(1.1); }
@@ -208,7 +187,7 @@ body::before {
 .trust-dot { width: 3px; height: 3px; background: var(--text-dim); border-radius: 50%; }
 .trust-stars { color: var(--gold); letter-spacing: 1px; }
 
-/* Бонус-карточка справа */
+/* Бонус-карточка */
 .bonus-card {
   background: linear-gradient(160deg, rgba(127, 119, 221, 0.14) 0%, rgba(212, 83, 126, 0.06) 100%);
   border: 1px solid var(--border-strong);
@@ -230,7 +209,6 @@ body::before {
   pointer-events: none;
   opacity: 0.6;
 }
-
 .bonus-header {
   display: flex;
   align-items: center;
@@ -258,7 +236,6 @@ body::before {
   text-transform: uppercase;
   color: var(--gold);
 }
-
 .bonus-title {
   font-family: var(--font-display);
   font-size: 26px;
@@ -267,11 +244,7 @@ body::before {
   margin: 8px 0 18px;
   letter-spacing: -0.3px;
 }
-
-.bonus-list {
-  list-style: none;
-  margin-bottom: 22px;
-}
+.bonus-list { list-style: none; margin-bottom: 22px; }
 .bonus-list li {
   display: flex;
   align-items: flex-start;
@@ -328,7 +301,6 @@ body::before {
 .btn:hover { transform: translateY(-2px); box-shadow: 0 8px 40px rgba(212, 83, 126, 0.4), inset 0 1px 0 rgba(255,255,255,0.15); }
 .btn:hover::before { left: 100%; }
 .btn:active { transform: translateY(0); }
-
 .btn-note {
   display: block;
   text-align: center;
@@ -339,10 +311,7 @@ body::before {
 }
 
 /* ========== ВИДЕО ========== */
-.video-section {
-  padding: 80px 0;
-  background: var(--bg-deep);
-}
+.video-section { padding: 80px 0; background: var(--bg-deep); }
 .video-wrap {
   position: relative;
   max-width: 880px;
@@ -357,9 +326,7 @@ body::before {
 .video-placeholder {
   position: absolute;
   inset: 0;
-  background:
-    radial-gradient(ellipse at center, rgba(127, 119, 221, 0.2) 0%, transparent 70%),
-    var(--bg-card);
+  background: radial-gradient(ellipse at center, rgba(127, 119, 221, 0.2) 0%, transparent 70%), var(--bg-card);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -397,10 +364,7 @@ body::before {
 }
 
 /* ========== СЕКЦИИ ========== */
-.section {
-  padding: 100px 0;
-  position: relative;
-}
+.section { padding: 100px 0; position: relative; }
 .section-alt { background: var(--bg-card); }
 
 .section-eyebrow {
@@ -434,10 +398,7 @@ body::before {
   color: #fff;
   letter-spacing: -0.5px;
 }
-.section-title em {
-  font-style: italic;
-  color: var(--accent-soft);
-}
+.section-title em { font-style: italic; color: var(--accent-soft); }
 
 .section-sub {
   text-align: center;
@@ -466,9 +427,7 @@ body::before {
   transform: translateY(-4px);
   border-color: var(--border-strong);
 }
-.feature-new {
-  border-color: rgba(212, 83, 126, 0.4);
-}
+.feature-new { border-color: rgba(212, 83, 126, 0.4); }
 .feature-badge {
   position: absolute;
   top: -10px;
@@ -510,83 +469,144 @@ body::before {
   line-height: 1.65;
 }
 
-/* ========== СКРИНШОТЫ TG ========== */
-.screenshots-grid {
+/* ========== MINI-APP SECTION ========== */
+.miniapp-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  align-items: center;
   max-width: 1000px;
   margin: 0 auto;
 }
-.tg-screen {
-  background: #0e1621;
-  border-radius: 12px;
-  padding: 16px;
-  border: 1px solid rgba(255,255,255,0.05);
-  min-height: 320px;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  position: relative;
-}
-.tg-screen::before {
-  content: '';
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  height: 36px;
-  background: #1a2733;
-  border-radius: 12px 12px 0 0;
-}
-.tg-screen > * { position: relative; z-index: 1; }
-.tg-screen-header {
-  height: 20px;
-  font-size: 12px;
-  color: #6ab3f3;
-  padding: 0 4px;
-  margin-bottom: 6px;
-}
-.msg-bot {
-  background: #1a2733;
-  border-radius: 10px 10px 10px 2px;
-  padding: 10px 12px;
-  color: #e7ebf0;
-  font-size: 12px;
-  line-height: 1.5;
-  max-width: 88%;
-}
-.msg-user {
-  background: #2b5278;
-  border-radius: 10px 10px 2px 10px;
-  padding: 10px 12px;
+.miniapp-text h3 {
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 500;
   color: #fff;
-  font-size: 12px;
+  margin-bottom: 20px;
+  letter-spacing: -0.3px;
+  line-height: 1.2;
+}
+.miniapp-text h3 em { font-style: italic; color: var(--accent-soft); }
+.miniapp-list {
+  list-style: none;
+  margin-bottom: 24px;
+}
+.miniapp-list li {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  padding: 14px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 15px;
+  color: var(--text);
   line-height: 1.5;
-  align-self: flex-end;
-  max-width: 75%;
 }
-.msg-btn {
-  background: #232e3c;
-  color: #6ab3f3;
-  border: 1px solid #2b5278;
-  border-radius: 6px;
-  padding: 7px 10px;
-  font-size: 11px;
-  text-align: center;
-}
-.tg-label {
-  text-align: center;
-  font-size: 13px;
-  color: var(--text-muted);
-  margin-top: 18px;
-  letter-spacing: 0.5px;
+.miniapp-list li:last-child { border-bottom: none; }
+.miniapp-list li strong { color: #fff; font-weight: 500; }
+.miniapp-list .icon {
+  flex-shrink: 0;
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(127, 119, 221, 0.15);
+  border: 1px solid rgba(127, 119, 221, 0.3);
+  border-radius: 50%;
+  color: var(--purple);
   font-family: var(--font-display);
   font-style: italic;
+  font-size: 13px;
+  margin-top: 2px;
+}
+
+/* Мокап телефона */
+.phone-mockup {
+  position: relative;
+  width: 280px;
+  margin: 0 auto;
+  aspect-ratio: 9/19;
+  background: #000;
+  border-radius: 36px;
+  padding: 10px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(127, 119, 221, 0.3);
+}
+.phone-screen {
+  width: 100%;
+  height: 100%;
+  background:
+    radial-gradient(ellipse at 50% 30%, rgba(212, 83, 126, 0.2) 0%, transparent 60%),
+    var(--bg-deep);
+  border-radius: 28px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  padding: 30px 20px 20px;
+}
+.phone-notch {
+  position: absolute;
+  top: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 22px;
+  background: #000;
+  border-radius: 14px;
+  z-index: 10;
+}
+.phone-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: var(--text);
+  font-size: 11px;
+  gap: 12px;
+}
+.phone-art {
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(circle, var(--accent) 0%, var(--purple-deep) 70%, transparent 100%);
+  border-radius: 50%;
+  filter: blur(8px);
+  opacity: 0.6;
+}
+.phone-label {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 14px;
+  color: var(--accent-soft);
+  letter-spacing: 0.5px;
+}
+.phone-placeholder-note {
+  font-size: 9px;
+  color: var(--text-dim);
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 0.5px solid var(--border);
+  letter-spacing: 0.5px;
+}
+.phone-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  width: 100%;
+}
+.phone-action {
+  background: rgba(127, 119, 221, 0.15);
+  border: 1px solid var(--border-strong);
+  color: var(--text);
+  padding: 8px 10px;
+  border-radius: 6px;
+  font-size: 10px;
 }
 
 /* ========== СОЦДОК ========== */
-.social-section {
-  padding: 100px 0;
-}
+.social-section { padding: 100px 0; }
 .social-grid {
   display: grid;
   grid-template-columns: 1fr 1.8fr;
@@ -643,33 +663,53 @@ body::before {
   border-radius: 0 4px 4px 0;
   padding: 20px 24px;
   position: relative;
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
 }
-.quote::before {
-  content: '"';
-  position: absolute;
-  top: -8px;
-  left: 14px;
+.quote-avatar {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--purple-deep), var(--accent));
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-family: var(--font-display);
-  font-size: 60px;
-  color: var(--accent);
-  opacity: 0.3;
-  line-height: 1;
+  font-size: 22px;
+  color: #fff;
+  flex-shrink: 0;
+  border: 1px solid var(--border-strong);
 }
+.quote-body { flex: 1; }
 .quote-text {
   font-family: var(--font-display);
   font-style: italic;
-  font-size: 18px;
+  font-size: 17px;
   line-height: 1.5;
   color: var(--text);
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 .quote-author {
   font-size: 12px;
   color: var(--text-muted);
-  letter-spacing: 1px;
-  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 .quote-author strong { color: var(--accent-soft); font-weight: 500; }
+.placeholder-note {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--gold);
+  background: rgba(201, 169, 110, 0.1);
+  border: 1px solid rgba(201, 169, 110, 0.3);
+  padding: 2px 8px;
+  border-radius: 3px;
+  margin-left: 8px;
+  vertical-align: middle;
+}
 
 /* ========== ФИНАЛЬНЫЙ CTA ========== */
 .final-cta {
@@ -692,7 +732,6 @@ body::before {
 }
 .final-cta::before { left: 0; }
 .final-cta::after { right: 0; }
-
 .final-eyebrow {
   font-family: var(--font-display);
   font-style: italic;
@@ -731,10 +770,7 @@ body::before {
   font-size: 14px;
   font-weight: 500;
 }
-.final-bonus::before {
-  content: '✦';
-  color: var(--gold);
-}
+.final-bonus::before { content: '✦'; color: var(--gold); }
 .btn-final {
   display: inline-flex;
   width: auto;
@@ -756,7 +792,7 @@ body::before {
   letter-spacing: 1px;
 }
 
-/* ========== АНИМАЦИИ ПОЯВЛЕНИЯ ========== */
+/* ========== АНИМАЦИИ ========== */
 .fade-up {
   opacity: 0;
   transform: translateY(30px);
@@ -776,7 +812,8 @@ body::before {
   .hero-sub { font-size: 16px; max-width: 100%; }
   .bonus-card { padding: 24px; }
   .features-grid { grid-template-columns: 1fr; gap: 16px; }
-  .screenshots-grid { grid-template-columns: 1fr; gap: 16px; }
+  .miniapp-grid { grid-template-columns: 1fr; gap: 40px; }
+  .phone-mockup { width: 240px; }
   .social-grid { grid-template-columns: 1fr; gap: 30px; }
   .stat-number { font-size: 56px; }
   .section { padding: 60px 0; }
@@ -796,9 +833,9 @@ body::before {
   <div class="container">
     <div class="hero-grid">
       <div class="fade-up">
-        <span class="hero-pill">Бесплатно · Прямо в Telegram</span>
+        <span class="hero-pill">Бесплатно · Открывается в Telegram</span>
         <h1>Стань героем <em>тёмного мира</em><br>за 5 минут</h1>
-        <p class="hero-sub">Пошаговая MMORPG, в которой 12 000 миров поглощены тьмой. Тактические бои, кланы, войны за территории. Без скачивания.</p>
+        <p class="hero-sub">Пошаговая MMORPG с тактическими боями, 5 классами героев и войнами кланов. Открывается прямо в Telegram — без скачивания и установки.</p>
         <div class="trust-row">
           <div class="trust-item"><strong>15 000+</strong> героев в игре</div>
           <div class="trust-dot"></div>
@@ -811,17 +848,17 @@ body::before {
       <div class="bonus-card fade-up" style="transition-delay: 0.2s;">
         <div class="bonus-header">
           <div class="bonus-rune">⚔</div>
-          <span class="bonus-label">Стартовый набор</span>
+          <span class="bonus-label">Подарок новичку</span>
         </div>
         <h2 class="bonus-title">Дар Призванного</h2>
         <ul class="bonus-list">
-          <li>Снаряжение героя <span class="value">×1 комплект</span></li>
-          <li>Монеты вечности <span class="value">×1 000</span></li>
-          <li>Печать Призыва <span class="value">×3</span></li>
-          <li>Бонус опыта на 7 дней <span class="value">+50%</span></li>
+          <li>Стартовое снаряжение <span class="value">×1 комплект</span></li>
+          <li>Монеты вечности <span class="value">×500</span></li>
+          <li>Зелье жизни <span class="value">×1</span></li>
+          <li>Бонус опыта на 3 дня <span class="value">+50%</span></li>
         </ul>
         <a href="https://t.me/zovtenei_bot?start=landing_hero" class="btn" id="cta-hero">
-          Забрать набор
+          Забрать подарок
           <span style="font-size: 14px;">→</span>
         </a>
         <span class="btn-note">Откроется в Telegram · Только для новых героев</span>
@@ -834,15 +871,11 @@ body::before {
 <section class="video-section">
   <div class="container">
     <div class="video-wrap fade-up">
-      <!-- Замените на реальный <video> или <iframe> -->
-      <div class="video-placeholder" onclick="this.querySelector('.play-button').style.transform='scale(1.2)';">
+      <!-- ЗАМЕНИТЬ: вставить реальный <video> или <iframe> с геймплеем мини-аппа -->
+      <div class="video-placeholder">
         <div class="play-button"></div>
-        <div class="video-label">Бой в Зове Теней</div>
+        <div class="video-label">Геймплей · 30 секунд</div>
       </div>
-      <!--
-      Пример реального видео:
-      <video src="/video/gameplay.mp4" poster="/img/video-cover.jpg" muted autoplay loop playsinline></video>
-      -->
     </div>
   </div>
 </section>
@@ -850,61 +883,79 @@ body::before {
 <!-- ========== ТРИ МЕХАНИКИ ========== -->
 <section class="section section-alt">
   <div class="container">
-    <div class="section-eyebrow fade-up"><span>Три причины зайти</span></div>
-    <h2 class="section-title fade-up">Что ждёт <em>в тенях</em></h2>
-    <p class="section-sub fade-up">Зов Теней — это не кликер. Здесь нужно думать, договариваться и сражаться.</p>
+    <div class="section-eyebrow fade-up"><span>Что отличает игру</span></div>
+    <h2 class="section-title fade-up">Не очередной <em>кликер</em></h2>
+    <p class="section-sub fade-up">Здесь нужно думать, выбирать стиль игры и договариваться с другими.</p>
 
     <div class="features-grid">
       <div class="feature fade-up">
         <div class="feature-icon">I</div>
         <h3>Тактические бои</h3>
-        <p>Пошаговая боёвка. Атака, защита, приёмы, контратаки. Побеждает тот, кто думает на ход вперёд — а не тот, кто быстрее тапает.</p>
+        <p>Пошаговая боёвка с приёмами, защитой и контратаками. Побеждает тот, кто думает на ход вперёд — а не тот, кто быстрее тапает по экрану.</p>
       </div>
-      <div class="feature feature-new fade-up" style="transition-delay: 0.15s;">
-        <span class="feature-badge">Новинка</span>
+      <div class="feature fade-up" style="transition-delay: 0.15s;">
         <div class="feature-icon">II</div>
+        <h3>5 классов героев</h3>
+        <p>Головорез, Вор, Верзила, Лиходей, Палач — у каждого свой стиль игры, оружие и приёмы. Выбирай того, кто близок тебе по духу.</p>
+      </div>
+      <div class="feature feature-new fade-up" style="transition-delay: 0.3s;">
+        <span class="feature-badge">Новинка</span>
+        <div class="feature-icon">III</div>
         <h3>Кланы и войны</h3>
         <p>Создай Дом, собери союзников, захвати Домен. Объяви войну соседям или включи Режим Террора — устраивай засады на чужаков.</p>
-      </div>
-      <div class="feature fade-up" style="transition-delay: 0.3s;">
-        <div class="feature-icon">III</div>
-        <h3>12 000 миров</h3>
-        <p>Каждый мир уникален — свои монстры, свои сокровища, своя история. ИИ создаёт сюжет под твоего героя. Ни один путь не повторяется.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ========== СКРИНШОТЫ TG ========== -->
+<!-- ========== MINI-APP SECTION ========== -->
 <section class="section">
   <div class="container">
-    <div class="section-eyebrow fade-up"><span>Как это выглядит</span></div>
-    <h2 class="section-title fade-up">Игра внутри <em>чата</em></h2>
-    <p class="section-sub fade-up">Никаких скачиваний, никаких ожиданий загрузки. Всё прямо в Telegram — в формате диалога с миром.</p>
+    <div class="section-eyebrow fade-up"><span>Технически</span></div>
+    <h2 class="section-title fade-up">Один клик — и ты <em>внутри</em></h2>
+    <p class="section-sub fade-up">Зов Теней работает как мини-приложение в Telegram. Никаких сторов, скачиваний и обновлений.</p>
 
-    <div class="screenshots-grid">
-      <div class="tg-screen fade-up">
-        <div class="tg-screen-header">📍 Тень: Зловещий Вихрь</div>
-        <div class="msg-bot">Что-то рычит в темноте. Звук становится громче. Мне стоит держать оружие наготове.</div>
-        <div class="msg-bot">⚠️ Замечен противник.</div>
-        <div class="msg-btn">⚔ Атаковать</div>
-        <div class="msg-btn">🛡 Защититься</div>
+    <div class="miniapp-grid">
+      <div class="miniapp-text fade-up">
+        <h3>Игра запускается прямо в мессенджере</h3>
+        <ul class="miniapp-list">
+          <li>
+            <div class="icon">I</div>
+            <div><strong>Без установки.</strong> Не нужно идти в App Store или Google Play. Достаточно открыть бот в Telegram.</div>
+          </li>
+          <li>
+            <div class="icon">II</div>
+            <div><strong>Запуск за 3 секунды.</strong> Один клик в чате — и ты уже в игре. Полноэкранный интерфейс с тач-управлением.</div>
+          </li>
+          <li>
+            <div class="icon">III</div>
+            <div><strong>Прогресс везде.</strong> Играешь с телефона, продолжаешь с компьютера. Аккаунт привязан к Telegram.</div>
+          </li>
+          <li>
+            <div class="icon">IV</div>
+            <div><strong>Без обновлений.</strong> Новые механики появляются сами — открыл игру и они уже там.</div>
+          </li>
+        </ul>
       </div>
-      <div class="tg-screen fade-up" style="transition-delay: 0.15s;">
-        <div class="tg-screen-header">⚔️ Бой · Раунд 3</div>
-        <div class="msg-bot">Урон: 12 · <strong style="color: #f4c0d1;">Крит!</strong></div>
-        <div class="msg-user">Прыжок с разворотом</div>
-        <div class="msg-bot">Противник повержен. +85 ОВ.</div>
-        <div class="msg-btn">🎁 Забрать награду</div>
-      </div>
-      <div class="tg-screen fade-up" style="transition-delay: 0.3s;">
-        <div class="tg-screen-header">🏰 Дом Чёрной Луны</div>
-        <div class="msg-bot">Захвачен Домен «Пепельный Зал». Пошлина с чужаков: 15%.</div>
-        <div class="msg-btn">⚔ Объявить войну соседям</div>
-        <div class="msg-btn">👥 Пригласить союзника</div>
+
+      <div class="fade-up" style="transition-delay: 0.2s;">
+        <div class="phone-mockup">
+          <div class="phone-notch"></div>
+          <div class="phone-screen">
+            <div class="phone-content">
+              <div class="phone-art"></div>
+              <div class="phone-label">Зов Теней</div>
+              <div class="phone-actions">
+                <div class="phone-action">⚔ В бой</div>
+                <div class="phone-action">🏰 Мой Дом</div>
+                <div class="phone-action">🗺 Карта мира</div>
+              </div>
+              <div class="phone-placeholder-note">ЗАМЕНИТЬ НА СКРИНШОТ МИНИ-АППА</div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="tg-label fade-up">— Бой · Тактика · Кланы —</div>
   </div>
 </section>
 
@@ -918,13 +969,21 @@ body::before {
         <div class="stat-stars">★★★★★<small>4.8 средняя оценка</small></div>
       </div>
       <div class="quotes">
+        <!-- ЗАМЕНИТЬ НА РЕАЛЬНОГО ИГРОКА -->
         <div class="quote fade-up">
-          <p class="quote-text">Зашёл попробовать на пять минут — играю третью неделю. Лучшая текстовая RPG в Telegram.</p>
-          <p class="quote-author"><strong>Алексей</strong> · Головорез, 14 круг</p>
+          <div class="quote-avatar">А</div>
+          <div class="quote-body">
+            <p class="quote-text">[Текст реального отзыва — 1–2 предложения. Лучше всего: чем зацепило, как давно играет, что нравится больше всего.]</p>
+            <p class="quote-author"><strong>Имя игрока</strong> · Класс, круг N <span class="placeholder-note">заглушка</span></p>
+          </div>
         </div>
+        <!-- ЗАМЕНИТЬ НА РЕАЛЬНОГО ИГРОКА -->
         <div class="quote fade-up" style="transition-delay: 0.15s;">
-          <p class="quote-text">Не ожидала такой глубины от бота. Кланы и войны — отдельный кайф. Наш Дом уже три Домена держит.</p>
-          <p class="quote-author"><strong>Марина</strong> · Княгиня Дома Полуночи</p>
+          <div class="quote-avatar">М</div>
+          <div class="quote-body">
+            <p class="quote-text">[Текст второго отзыва — желательно от игрока другого типа: если первый о боях, второй про кланы или сюжет.]</p>
+            <p class="quote-author"><strong>Имя игрока</strong> · Класс, круг N <span class="placeholder-note">заглушка</span></p>
+          </div>
         </div>
       </div>
     </div>
@@ -936,15 +995,15 @@ body::before {
   <div class="container">
     <div class="final-eyebrow fade-up">Тени уже зовут тебя</div>
     <h2 class="fade-up">Готов сделать <em>первый шаг?</em></h2>
-    <p class="fade-up">Стартовый набор «Дар Призванного» — твой при первом входе в игру. Действует только для новых героев.</p>
+    <p class="fade-up">Подарок «Дар Призванного» ждёт тебя при первом входе. Действует только для новых героев.</p>
     <div class="final-bonuses fade-up">
-      <span class="final-bonus">Снаряжение героя</span>
-      <span class="final-bonus">1 000 монет</span>
-      <span class="final-bonus">3 Печати Призыва</span>
-      <span class="final-bonus">+50% опыта на 7 дней</span>
+      <span class="final-bonus">Стартовое снаряжение</span>
+      <span class="final-bonus">500 монет</span>
+      <span class="final-bonus">Зелье жизни</span>
+      <span class="final-bonus">+50% опыта на 3 дня</span>
     </div>
     <a href="https://t.me/zovtenei_bot?start=landing_final" class="btn btn-final fade-up" id="cta-final">
-      Забрать набор и начать
+      Открыть игру
     </a>
   </div>
 </section>
@@ -957,25 +1016,20 @@ body::before {
 </footer>
 
 <script>
-// Анимация появления при скролле
 const observer = new IntersectionObserver((entries) => {
   entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add('visible');
-    }
+    if (entry.isIntersecting) entry.target.classList.add('visible');
   });
 }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
 document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
 
-// Трекинг кликов по CTA (для Яндекс.Метрики / VK Pixel)
 document.querySelectorAll('#cta-hero, #cta-final').forEach(btn => {
   btn.addEventListener('click', (e) => {
     const ctaId = btn.id;
     console.log('CTA clicked:', ctaId);
-    // Яндекс.Метрика: ym(METRIKA_ID, 'reachGoal', ctaId);
-    // VK Pixel: VK.Retargeting.Event(ctaId);
-    // Telegram Analytics: window.dataLayer.push({event: 'cta_click', cta_id: ctaId});
+    // ym(METRIKA_ID, 'reachGoal', ctaId);
+    // VK.Retargeting.Event(ctaId);
   });
 });
 </script>
