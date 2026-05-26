@@ -4,12 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Зов Теней — пошаговая MMORPG в Telegram</title>
-<meta name="description" content="Стань героем тёмного мира за 5 минут. Тактические бои, 5 классов, кланы и войны. Открывается в Telegram за один клик.">
+<meta name="description" content="Стань героем тёмного мира за 5 минут. Тактические бои, 5 классов, кланы и войны. Играй прямо в чате Telegram.">
 
 <!-- Open Graph -->
 <meta property="og:title" content="Зов Теней — пошаговая MMORPG в Telegram">
-<meta property="og:description" content="Стань героем тёмного мира за 5 минут. Открывается в Telegram за один клик.">
+<meta property="og:description" content="Стань героем тёмного мира за 5 минут. Играй прямо в чате Telegram.">
 <meta property="og:type" content="website">
+<meta property="og:image" content="gameplay_poster.jpg">
 
 <!-- Шрифты -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -41,10 +42,10 @@
   --purple: #7f77dd;
   --purple-deep: #534ab7;
   --gold: #c9a96e;
+  --tg-blue: #6ab3f3;
   --font-display: 'Cormorant Garamond', Georgia, serif;
   --font-body: 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
 }
-
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html { scroll-behavior: smooth; }
 body {
@@ -310,57 +311,93 @@ body::before {
   letter-spacing: 0.5px;
 }
 
-/* ========== ВИДЕО ========== */
-.video-section { padding: 80px 0; background: var(--bg-deep); }
-.video-wrap {
-  position: relative;
-  max-width: 880px;
+/* ========== ВИДЕО СЕКЦИЯ С ВЕРТИКАЛЬНЫМ ВИДЕО ========== */
+.video-section {
+  padding: 80px 0;
+  background: var(--bg-deep);
+}
+.video-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 60px;
+  align-items: center;
+  max-width: 1000px;
   margin: 0 auto;
-  aspect-ratio: 16/9;
-  border-radius: 4px;
-  overflow: hidden;
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  box-shadow: 0 30px 100px rgba(0, 0, 0, 0.6);
 }
-.video-placeholder {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(ellipse at center, rgba(127, 119, 221, 0.2) 0%, transparent 70%), var(--bg-card);
+.video-info h3 {
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 500;
+  color: #fff;
+  margin-bottom: 16px;
+  line-height: 1.2;
+  letter-spacing: -0.3px;
+}
+.video-info h3 em { font-style: italic; color: var(--accent-soft); }
+.video-info p {
+  font-size: 16px;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+  line-height: 1.6;
+}
+.video-info-list {
+  list-style: none;
+  margin-top: 24px;
+}
+.video-info-list li {
   display: flex;
   align-items: center;
-  justify-content: center;
-  cursor: pointer;
+  gap: 12px;
+  padding: 10px 0;
+  font-size: 14px;
+  color: var(--text);
 }
-.play-button {
-  width: 88px;
-  height: 88px;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.95);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: transform 0.3s ease;
-  box-shadow: 0 0 0 12px rgba(255, 255, 255, 0.08), 0 0 0 24px rgba(255, 255, 255, 0.04);
-}
-.play-button:hover { transform: scale(1.1); }
-.play-button::after {
+.video-info-list li::before {
   content: '';
-  width: 0; height: 0;
-  border-left: 22px solid var(--bg-deep);
-  border-top: 14px solid transparent;
-  border-bottom: 14px solid transparent;
-  margin-left: 6px;
+  width: 6px;
+  height: 6px;
+  background: var(--accent);
+  border-radius: 50%;
+  flex-shrink: 0;
+  box-shadow: 0 0 8px var(--accent);
 }
-.video-label {
+
+.video-frame {
+  position: relative;
+  max-width: 320px;
+  margin: 0 auto;
+  background: #000;
+  border-radius: 32px;
+  padding: 8px;
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(127, 119, 221, 0.3);
+}
+.video-frame::before {
+  content: '';
   position: absolute;
-  bottom: 24px;
-  left: 24px;
+  top: 16px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 22px;
+  background: #000;
+  border-radius: 14px;
+  z-index: 5;
+}
+.video-frame video {
+  width: 100%;
+  display: block;
+  border-radius: 26px;
+  aspect-ratio: 9/19;
+  object-fit: cover;
+  background: var(--bg-card);
+}
+.video-caption {
+  text-align: center;
+  margin-top: 16px;
   font-family: var(--font-display);
   font-style: italic;
-  font-size: 18px;
-  color: var(--text);
-  letter-spacing: 0.5px;
+  font-size: 15px;
+  color: var(--accent-soft);
 }
 
 /* ========== СЕКЦИИ ========== */
@@ -469,140 +506,55 @@ body::before {
   line-height: 1.65;
 }
 
-/* ========== MINI-APP SECTION ========== */
-.miniapp-grid {
+/* ========== КАК ЭТО РАБОТАЕТ ========== */
+.how-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 60px;
-  align-items: center;
-  max-width: 1000px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  max-width: 900px;
   margin: 0 auto;
+  position: relative;
 }
-.miniapp-text h3 {
+.how-step {
+  text-align: center;
+  position: relative;
+  padding: 0 16px;
+}
+.how-step-num {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-strong);
+  border-radius: 50%;
   font-family: var(--font-display);
-  font-size: 32px;
+  font-size: 24px;
+  font-style: italic;
+  color: var(--accent-soft);
+  position: relative;
+}
+.how-step-num::before {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border-radius: 50%;
+  border: 1px solid rgba(212, 83, 126, 0.2);
+}
+.how-step h4 {
+  font-family: var(--font-display);
+  font-size: 22px;
   font-weight: 500;
   color: #fff;
-  margin-bottom: 20px;
-  letter-spacing: -0.3px;
-  line-height: 1.2;
+  margin-bottom: 10px;
+  letter-spacing: -0.2px;
 }
-.miniapp-text h3 em { font-style: italic; color: var(--accent-soft); }
-.miniapp-list {
-  list-style: none;
-  margin-bottom: 24px;
-}
-.miniapp-list li {
-  display: flex;
-  align-items: flex-start;
-  gap: 14px;
-  padding: 14px 0;
-  border-bottom: 1px solid var(--border);
-  font-size: 15px;
-  color: var(--text);
-  line-height: 1.5;
-}
-.miniapp-list li:last-child { border-bottom: none; }
-.miniapp-list li strong { color: #fff; font-weight: 500; }
-.miniapp-list .icon {
-  flex-shrink: 0;
-  width: 28px;
-  height: 28px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(127, 119, 221, 0.15);
-  border: 1px solid rgba(127, 119, 221, 0.3);
-  border-radius: 50%;
-  color: var(--purple);
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 13px;
-  margin-top: 2px;
-}
-
-/* Мокап телефона */
-.phone-mockup {
-  position: relative;
-  width: 280px;
-  margin: 0 auto;
-  aspect-ratio: 9/19;
-  background: #000;
-  border-radius: 36px;
-  padding: 10px;
-  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(127, 119, 221, 0.3);
-}
-.phone-screen {
-  width: 100%;
-  height: 100%;
-  background:
-    radial-gradient(ellipse at 50% 30%, rgba(212, 83, 126, 0.2) 0%, transparent 60%),
-    var(--bg-deep);
-  border-radius: 28px;
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
-  padding: 30px 20px 20px;
-}
-.phone-notch {
-  position: absolute;
-  top: 8px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 100px;
-  height: 22px;
-  background: #000;
-  border-radius: 14px;
-  z-index: 10;
-}
-.phone-content {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  color: var(--text);
-  font-size: 11px;
-  gap: 12px;
-}
-.phone-art {
-  width: 100px;
-  height: 100px;
-  background: radial-gradient(circle, var(--accent) 0%, var(--purple-deep) 70%, transparent 100%);
-  border-radius: 50%;
-  filter: blur(8px);
-  opacity: 0.6;
-}
-.phone-label {
-  font-family: var(--font-display);
-  font-style: italic;
+.how-step p {
   font-size: 14px;
-  color: var(--accent-soft);
-  letter-spacing: 0.5px;
-}
-.phone-placeholder-note {
-  font-size: 9px;
-  color: var(--text-dim);
-  margin-top: 12px;
-  padding-top: 12px;
-  border-top: 0.5px solid var(--border);
-  letter-spacing: 0.5px;
-}
-.phone-actions {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  width: 100%;
-}
-.phone-action {
-  background: rgba(127, 119, 221, 0.15);
-  border: 1px solid var(--border-strong);
-  color: var(--text);
-  padding: 8px 10px;
-  border-radius: 6px;
-  font-size: 10px;
+  color: var(--text-muted);
+  line-height: 1.6;
 }
 
 /* ========== СОЦДОК ========== */
@@ -811,17 +763,16 @@ body::before {
   .hero h1 { font-size: 36px; }
   .hero-sub { font-size: 16px; max-width: 100%; }
   .bonus-card { padding: 24px; }
+  .video-grid { grid-template-columns: 1fr; gap: 40px; }
+  .video-frame { max-width: 260px; }
   .features-grid { grid-template-columns: 1fr; gap: 16px; }
-  .miniapp-grid { grid-template-columns: 1fr; gap: 40px; }
-  .phone-mockup { width: 240px; }
+  .how-grid { grid-template-columns: 1fr; gap: 32px; }
   .social-grid { grid-template-columns: 1fr; gap: 30px; }
   .stat-number { font-size: 56px; }
   .section { padding: 60px 0; }
   .final-cta { padding: 80px 0; }
   .final-bonuses { gap: 16px; }
   .video-section { padding: 50px 0; }
-  .play-button { width: 64px; height: 64px; }
-  .play-button::after { border-left-width: 16px; border-top-width: 10px; border-bottom-width: 10px; }
 }
 </style>
 </head>
@@ -833,9 +784,9 @@ body::before {
   <div class="container">
     <div class="hero-grid">
       <div class="fade-up">
-        <span class="hero-pill">Бесплатно · Открывается в Telegram</span>
+        <span class="hero-pill">Бесплатно · Играй прямо в Telegram</span>
         <h1>Стань героем <em>тёмного мира</em><br>за 5 минут</h1>
-        <p class="hero-sub">Пошаговая MMORPG с тактическими боями, 5 классами героев и войнами кланов. Открывается прямо в Telegram — без скачивания и установки.</p>
+        <p class="hero-sub">Пошаговая MMORPG с тактическими боями, 5 классами героев и войнами кланов. Без скачивания — игра живёт прямо в твоём чате.</p>
         <div class="trust-row">
           <div class="trust-item"><strong>15 000+</strong> героев в игре</div>
           <div class="trust-dot"></div>
@@ -867,14 +818,34 @@ body::before {
   </div>
 </section>
 
-<!-- ========== ВИДЕО ========== -->
+<!-- ========== ВИДЕО ГЕЙМПЛЕЯ ========== -->
 <section class="video-section">
   <div class="container">
-    <div class="video-wrap fade-up">
-      <!-- ЗАМЕНИТЬ: вставить реальный <video> или <iframe> с геймплеем мини-аппа -->
-      <div class="video-placeholder">
-        <div class="play-button"></div>
-        <div class="video-label">Геймплей · 30 секунд</div>
+    <div class="video-grid">
+      <div class="video-info fade-up">
+        <h3>Так выглядит <em>бой в тенях</em></h3>
+        <p>Каждое сражение — выбор. Атаковать в лоб или ждать? Защититься или контратаковать? Тактика решает больше, чем уровень снаряжения.</p>
+        <ul class="video-info-list">
+          <li>Пошаговая боёвка с приёмами</li>
+          <li>Опознание противника перед атакой</li>
+          <li>Реальная игра в чате Telegram</li>
+        </ul>
+      </div>
+
+      <div class="fade-up" style="transition-delay: 0.2s;">
+        <div class="video-frame">
+          <video
+            src="gameplay_short.mp4"
+            poster="gameplay_poster.jpg"
+            autoplay
+            muted
+            loop
+            playsinline
+            preload="metadata">
+            Ваш браузер не поддерживает видео.
+          </video>
+        </div>
+        <p class="video-caption">— Реальный геймплей —</p>
       </div>
     </div>
   </div>
@@ -908,52 +879,28 @@ body::before {
   </div>
 </section>
 
-<!-- ========== MINI-APP SECTION ========== -->
+<!-- ========== КАК ЭТО РАБОТАЕТ ========== -->
 <section class="section">
   <div class="container">
-    <div class="section-eyebrow fade-up"><span>Технически</span></div>
-    <h2 class="section-title fade-up">Один клик — и ты <em>внутри</em></h2>
-    <p class="section-sub fade-up">Зов Теней работает как мини-приложение в Telegram. Никаких сторов, скачиваний и обновлений.</p>
+    <div class="section-eyebrow fade-up"><span>Как начать</span></div>
+    <h2 class="section-title fade-up">Три клика до <em>первого боя</em></h2>
+    <p class="section-sub fade-up">Никаких сторов, регистраций и форм. Telegram у тебя уже есть.</p>
 
-    <div class="miniapp-grid">
-      <div class="miniapp-text fade-up">
-        <h3>Игра запускается прямо в мессенджере</h3>
-        <ul class="miniapp-list">
-          <li>
-            <div class="icon">I</div>
-            <div><strong>Без установки.</strong> Не нужно идти в App Store или Google Play. Достаточно открыть бот в Telegram.</div>
-          </li>
-          <li>
-            <div class="icon">II</div>
-            <div><strong>Запуск за 3 секунды.</strong> Один клик в чате — и ты уже в игре. Полноэкранный интерфейс с тач-управлением.</div>
-          </li>
-          <li>
-            <div class="icon">III</div>
-            <div><strong>Прогресс везде.</strong> Играешь с телефона, продолжаешь с компьютера. Аккаунт привязан к Telegram.</div>
-          </li>
-          <li>
-            <div class="icon">IV</div>
-            <div><strong>Без обновлений.</strong> Новые механики появляются сами — открыл игру и они уже там.</div>
-          </li>
-        </ul>
+    <div class="how-grid">
+      <div class="how-step fade-up">
+        <div class="how-step-num">I</div>
+        <h4>Открой бота</h4>
+        <p>Один тап по кнопке — Telegram откроет диалог с ботом. Никаких загрузок и установок.</p>
       </div>
-
-      <div class="fade-up" style="transition-delay: 0.2s;">
-        <div class="phone-mockup">
-          <div class="phone-notch"></div>
-          <div class="phone-screen">
-            <div class="phone-content">
-              <div class="phone-art"></div>
-              <div class="phone-label">Зов Теней</div>
-              <div class="phone-actions">
-                <div class="phone-action">⚔ В бой</div>
-                <div class="phone-action">🏰 Мой Дом</div>
-                <div class="phone-action">🗺 Карта мира</div>
-              </div>
-              <div class="phone-placeholder-note">ЗАМЕНИТЬ НА СКРИНШОТ МИНИ-АППА</div>
-            </div>
-          </div>
-        </div>
+      <div class="how-step fade-up" style="transition-delay: 0.15s;">
+        <div class="how-step-num">II</div>
+        <h4>Выбери героя</h4>
+        <p>Один из пяти классов и спутник по духу. Подарок «Дар Призванного» приходит сразу.</p>
+      </div>
+      <div class="how-step fade-up" style="transition-delay: 0.3s;">
+        <div class="how-step-num">III</div>
+        <h4>В первый бой</h4>
+        <p>Тени уже зовут. Тактика, приёмы, награды. Всё прямо в чате — нажимай кнопки и сражайся.</p>
       </div>
     </div>
   </div>
